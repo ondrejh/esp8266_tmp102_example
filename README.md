@@ -15,7 +15,7 @@ Resource: http://www.esp8266learning.com/tmp102-digital-sensor-and-esp8266-examp
 
 Schematic:
 
-![the schematic from the resource page](/esp8266-and-TMP102_bb.jpg)
+![the schematic from the resource page](/esp8266_TMP102.jpg)
 
 ## ap_http_example
 The combination of AP (access point) firmware and simple HTTP server. Static IP, no password (open network).
