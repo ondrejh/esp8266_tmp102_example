@@ -3,7 +3,7 @@
 #include <ESP8266mDNS.h>
 #include "Wire.h"
 
-//#include "jq.h"
+#include "jq.h"
 
 #define TMP102_I2C_ADDRESS 72
 
@@ -13,7 +13,8 @@ float temperature = 0.0;
 
 void httpRoot() {
   String runTime = String(millis() / 1000);
-  String msg = "<!DOCTYPE html>\n<html>\n<head>\n<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script><script>function get_data() {$.getJSON(\"/\data\", function(result){$(\"#temp\").text(result.temp);$(\"#cnt\").text(result.cnt);});}</script>\n";
+  //String msg = "<!DOCTYPE html>\n<html>\n<head>\n<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script><script>function get_data() {$.getJSON(\"/\data\", function(result){$(\"#temp\").text(result.temp);$(\"#cnt\").text(result.cnt);});}</script>\n";
+  String msg = "<!DOCTYPE html>\n<html>\n<head>\n<script src=\"/jq\"></script><script>function get_data() {$.getJSON(\"/\data\", function(result){$(\"#temp\").text(result.temp);$(\"#cnt\").text(result.cnt);});}</script>\n";
   msg += "<title>ESP8266 TMP102 AP</title>\n</head>\n<body onload=\"var intervalID = setInterval(function(){get_data();}, 500);\">\n";
   msg += "<div id=\"temp\">bla</div>\n";
   msg += "<div id=\"cnt\">blabla</div>\n</body></html>";
@@ -30,16 +31,19 @@ void jsonData() {
   server.send(200, "application/json", msg);
 }
 
-/*void httpJQ() {
-  int ptr = 0;
-  while (true) {
-    ptr += server.send(200, "text/html", &jq[ptr]);
-    if (ptr >= jq_length)
-      break;
-  }
+void httpJQ() {
+  /*int p = 0;
+  while (p<jq_length) {
+    int cnt = 128;
+    if (p+cnt>jq_length)
+      cnt = jq_length-p;
+    server.sendContent_P(&jq[p], cnt);
+    p += cnt;
+  }*/
+  server.sendContent_P(jq, jq_length);
 }
-  server.write(200, "text/html", jq);
-//}*/
+//  server.write(200, "text/html", jq);
+//}
 
 void httpUnknown() {
   String msg = "Unknown URL\n\n";
@@ -98,7 +102,7 @@ void setup()
   }
   server.on("/", httpRoot);
   server.on("/data", jsonData);
-  //server.on("/jq", httpJQ);
+  server.on("/jq", httpJQ);
   server.onNotFound(httpUnknown);
   server.begin();
   Serial.println("HTTP is now ON.");
