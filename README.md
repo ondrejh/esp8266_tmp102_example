@@ -32,3 +32,4 @@ To generate "jq.h" run "bin2c.py jquery.min.js jq.h".
 * Improve ap_http_tmp102 html styling
 * Make a picture
 * Provide more links
+* Blink on sensor read (to show its doing something)
