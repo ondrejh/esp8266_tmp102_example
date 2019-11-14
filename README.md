@@ -10,10 +10,12 @@ You can find there:
 
 ## tmp102_example
 Test connection to TMP102. The output on UART. Very basics.
+
 Resource: http://www.esp8266learning.com/tmp102-digital-sensor-and-esp8266-example.php
+
 Schematic:
-![Schematic](/esp8266-and-TMP102_bb.jpg)
-Format: ![The schematic from the resource page](url)
+
+![the schematic from the resource page](/esp8266-and-TMP102_bb.jpg)
 
 ## ap_http_example
 The combination of AP (access point) firmware and simple HTTP server. Static IP, no password (open network).
