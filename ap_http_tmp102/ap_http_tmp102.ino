@@ -14,9 +14,10 @@ float temperature = 0.0;
 void httpRoot() {
   String runTime = String(millis() / 1000);
   String msg = "<!DOCTYPE html>\n<html>\n<head>\n<script src=\"/jquery.min.js\"></script><script>function get_data() {$.getJSON(\"/\data\", function(result){$(\"#temp\").text(result.temp);$(\"#cnt\").text(result.cnt);});}</script>\n";
-  msg += "<title>ESP8266 TMP102 AP</title>\n</head>\n<body onload=\"var intervalID = setInterval(function(){get_data();}, 500);\">\n";
-  msg += "<div id=\"temp\">bla</div>\n";
-  msg += "<div id=\"cnt\">blabla</div>\n</body></html>";
+  msg += "<title>ESP8266 TMP102 AP</title>\n</head>\n<body onload=\"var intervalID = setInterval(function(){get_data();}, 500);\">\n<p>\n";
+  msg += "<h1><span id=\"temp\">--</span>&deg;C</h1>\n";
+  msg += "<span id=\"cnt\">--</span>\n";
+  msg += "</body></html>";
   server.send(200, "text/html", msg);
 }
 
