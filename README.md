@@ -7,6 +7,7 @@ You can find there:
 * how to make simple HTTP server running on ESP8266
 * how to send json data
 * how to send "big" file
+* how to use standalone jquery on ESP8266
 
 ## tmp102_example
 Test connection to TMP102. The output on UART. Very basics.
