@@ -1,11 +1,22 @@
 # esp8266_tmp102_example
 The set of examples of web-enabled thermometer (esp8266, tmp102)
 
+You can find there:
+* how to get data from TMP102 i2c sensor
+* how to set ESP8266 as an wifi access point
+* how to make simple HTTP server running on ESP8266
+* how to send json data
+* how to send "big" file
+
 ## tmp102_example
 Test connection to TMP102. The output on UART. Very basics.
+Resource: http://www.esp8266learning.com/tmp102-digital-sensor-and-esp8266-example.php
+Schematic:
+![Schematic](/esp8266-and-TMP102_bb.jpg)
+Format: ![The schematic from the resource page](url)
 
 ## ap_http_example
-The combination of AP (access point) firmware and simple HTTP server.
+The combination of AP (access point) firmware and simple HTTP server. Static IP, no password (open network).
 
 ## ap_http_tmp102
 The example creates AP with static address "192.168.42.1", http server open.
@@ -16,5 +27,6 @@ The simple program converting binary file into c code, which can be included int
 To generate "jq.h" run "bin2c.py jquery.min.js jq.h".
 
 # TODO
-* Provide schematic
 * Improve ap_http_tmp102 html styling
+* Make a picture
+* Provide more links
